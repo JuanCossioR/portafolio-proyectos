@@ -1,0 +1,43 @@
+import time
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+driver = webdriver.Chrome()
+
+try:
+   
+    url = "https://www.mercadolibre.com.co/consola-playstation-5-slim-estandar-gt7-astro-bot-blanco/p/MCO62307336?pdp_filters=item_id%3AMCO3366842984#origin%3Dshare%26sid%3Dshare%26wid%3DMCO3366842984" # Pega aquí el link real
+    driver.get(url)
+
+  
+    wait = WebDriverWait(driver, 10)
+    
+    print("Buscando datos...")
+    
+ 
+    precio_elemento = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, 'span.andes-money-amount__fraction')))
+    
+    
+    precio = precio_elemento.text
+    
+    try:
+        review = driver.find_element(By.CLASS_NAME, "ui-pdp-review__rating").text
+    except:
+        review = "Sin calificaciones aún"
+
+    print("-" * 30)
+    print(f"ÉXITO!")
+    print(f"Precio: ${precio}")
+    print(f"Rating: {review}")
+    print("-" * 30)
+
+except Exception as e:
+    print(f"Ocurrió un error: {e}")
+
+finally:
+   
+    time.sleep(5)
+    driver.quit()

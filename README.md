@@ -1,7 +1,3 @@
-👨‍💻 Systems Engineering student
-⚽ Passionate about football
-📍 Colombia
+👨‍💻 Systems Engineering student ⚽ Passionate about football 📍 Colombia
 
-# Proyects
-POS
-Downloads_reviews
+# Proyects: POS - Downloads_reviews
